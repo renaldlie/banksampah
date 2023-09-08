@@ -6,103 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="188dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="12dp"
-        android:text="Kalkulator Sampah"
-        android:textAlignment="center"
-        android:textSize="16sp"
-        android:textStyle="bold"
+    <FrameLayout
+        android:id="@+id/fl_wrapper"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNav"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/dropdown_bank"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-
-        android:layout_marginTop="10dp"
-        android:hint="@string/select_bank"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="0dp"
+        android:layout_height="57dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        app:menu="@menu/nav_menu" >
 
-        <AutoCompleteTextView
-            android:id="@+id/autoCompleteTextView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="" />
-
-
-
-
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/dropdown_petugas"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:layout_width="300dp"
-
-        android:layout_height="60dp"
-        android:layout_marginTop="10dp"
-        android:hint="@string/select_petugas"
-        app:layout_constraintEnd_toEndOf="@+id/dropdown_bank"
-        app:layout_constraintStart_toStartOf="@+id/dropdown_bank"
-        app:layout_constraintTop_toBottomOf="@+id/dropdown_bank">>
-
-        <AutoCompleteTextView
-            android:id="@+id/autoCompleteTextView2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/dropdown_nasabah"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:layout_width="300dp"
-
-        android:layout_height="60dp"
-        android:layout_marginTop="10dp"
-        android:hint="@string/select_nasabah"
-        app:layout_constraintEnd_toEndOf="@+id/dropdown_petugas"
-        app:layout_constraintStart_toStartOf="@+id/dropdown_petugas"
-        app:layout_constraintTop_toBottomOf="@+id/dropdown_petugas">>
-
-        <AutoCompleteTextView
-            android:id="@+id/autoCompleteTextView3"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/dateInputLayout"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:hint="Select Date"
-        app:layout_constraintEnd_toEndOf="@+id/dropdown_nasabah"
-        app:layout_constraintStart_toStartOf="@+id/dropdown_nasabah"
-        app:layout_constraintTop_toBottomOf="@+id/dropdown_nasabah">
-
-        <Spinner
-            android:id="@+id/dateSpinner"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-    </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

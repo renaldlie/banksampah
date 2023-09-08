@@ -1,5 +1,6 @@
 package com.example.banksampah.fragments
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -18,6 +19,7 @@ private const val ARG_PARAM2 = "param2"
 
 private lateinit var dateInputLayout: TextInputLayout
 private lateinit var dateSpinner: Spinner
+private lateinit var dateEditText : EditText
 
 /**
  * A simple [Fragment] subclass.
@@ -44,30 +46,36 @@ class CalculatorFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_calculator, container, false)
         dateInputLayout = view.findViewById(R.id.dateInputLayout)
-        dateSpinner = view.findViewById(R.id.dateSpinner)
+        dateEditText = view.findViewById(R.id.dateEditText)
 
-        val dateOptions = getAllDates()
 
-        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, dateOptions)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        dateSpinner.adapter = adapter
-
-        // Set an item selected listener for the Spinner
-        dateSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                val selectedDate = dateOptions[position]
-                dateInputLayout.editText?.setText(selectedDate)
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                // Handle nothing selected if needed
-            }
+        dateEditText.setOnClickListener {
+            dateEditText.setHint("");
+            showDatePicker()
         }
+
+//        val dateOptions = getAllDates()
+//
+//        val adapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, dateOptions)
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+//        dateSpinner.adapter = adapter
+//
+//        // Set an item selected listener for the Spinner
+//        dateSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+//            override fun onItemSelected(
+//                parent: AdapterView<*>?,
+//                view: View?,
+//                position: Int,
+//                id: Long
+//            ) {
+//                val selectedDate = dateOptions[position]
+//                dateInputLayout.editText?.setText(selectedDate)
+//            }
+//
+//            override fun onNothingSelected(parent: AdapterView<*>?) {
+//                // Handle nothing selected if needed
+//            }
+//        }
 
 
 
@@ -78,12 +86,12 @@ class CalculatorFragment : Fragment() {
         val nama_petugas = resources.getStringArray(R.array.nama_petugas)
         val nama_nasabah = resources.getStringArray(R.array.nama_nasabah)
 
-        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, nama_bank)
-        autoComplete.setAdapter(arrayAdapter)
-        val arrayAdapter1 = ArrayAdapter(requireContext(), R.layout.dropdown_item, nama_petugas)
-        autoComplete2.setAdapter(arrayAdapter1)
-        val arrayAdapter2 = ArrayAdapter(requireContext(), R.layout.dropdown_item, nama_nasabah)
-        autoComplete3.setAdapter(arrayAdapter2)
+//        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, nama_bank)
+//        autoComplete.setAdapter(arrayAdapter)
+//        val arrayAdapter1 = ArrayAdapter(requireContext(), R.layout.dropdown_item, nama_petugas)
+//        autoComplete2.setAdapter(arrayAdapter1)
+//        val arrayAdapter2 = ArrayAdapter(requireContext(), R.layout.dropdown_item, nama_nasabah)
+//        autoComplete3.setAdapter(arrayAdapter2)
 
         autoComplete.setOnItemClickListener { parent, view, position, id ->
             val selectedLanguage = parent.getItemAtPosition(position).toString()
@@ -119,18 +127,34 @@ class CalculatorFragment : Fragment() {
                     }
                 }
     }
-    private fun getAllDates(): List<String> {
-        val dateOptions = mutableListOf<String>()
+
+
+    private fun showDatePicker() {
         val calendar = Calendar.getInstance()
-        val currentDate = Calendar.getInstance()
-        val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.US)
+        val year = calendar.get(Calendar.YEAR)
+        val month = calendar.get(Calendar.MONTH)
+        val dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH)
 
-        while (calendar <= currentDate) {
-            val formattedDate = dateFormat.format(calendar.time)
-            dateOptions.add(formattedDate)
-            calendar.add(Calendar.DAY_OF_MONTH, 1)
-        }
+        val datePickerDialog = DatePickerDialog(
+            requireContext(),
+            { _, selectedYear, selectedMonth, selectedDayOfMonth ->
+                // Handle the selected date
+                val selectedDate = "$selectedDayOfMonth ${getMonthName(selectedMonth)} $selectedYear"
+                dateEditText.setText(selectedDate)
+            },
+            year,
+            month,
+            dayOfMonth
+        )
 
-        return dateOptions
+        datePickerDialog.show()
+    }
+
+    private fun getMonthName(month: Int): String {
+        val monthNames = arrayOf(
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        )
+        return monthNames[month]
     }
 }
