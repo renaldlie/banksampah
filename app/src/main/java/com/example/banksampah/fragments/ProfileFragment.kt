@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.banksampah.InputSampahAdapter
 import com.example.banksampah.R
 import com.example.banksampah.SampahAdapter
+import com.example.banksampah.model.DataSampah
 import com.example.banksampah.model.Sampah
 
 // TODO: Rename parameter arguments, choose names that match
@@ -17,9 +19,8 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 private lateinit var sampahRecyclerView: RecyclerView
-private lateinit var sampahArrayList: ArrayList<Sampah>
-lateinit var res_kat : Array<String>
-lateinit var res_subkat : Array<String>
+private var itemList: MutableList<DataSampah>? = null
+private lateinit var adapter: InputSampahAdapter
 
 
 /**
@@ -46,27 +47,24 @@ class ProfileFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
 
-        res_kat = arrayOf("PET","Logam","Besi")
-        res_subkat = arrayOf("Rongsok Campur","Tembaga","Aluminium")
-
-        sampahRecyclerView = view.findViewById(R.id.rv_datasampah);
+        val sampahRecyclerView = view.findViewById<RecyclerView>(R.id.rv_datasampah)
         sampahRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         sampahRecyclerView.setHasFixedSize(true)
 
-        sampahArrayList = arrayListOf<Sampah>()
-        getUserData()
+        // Create and set the adapter for the RecyclerView
+        adapter = InputSampahAdapter(itemList ?: mutableListOf())
+        sampahRecyclerView.adapter = adapter
 
-        return view
-    }
+        val bundle = arguments
+        if (bundle != null) {
+            itemList = bundle.getParcelableArrayList<DataSampah>("itemList")
+            if (itemList != null) {
+                // Update the adapter with itemList
 
-    private fun getUserData() {
-        for(i in res_kat.indices){
-
-            val sampahh = Sampah(res_kat[i], res_subkat[i])
-            sampahArrayList.add(sampahh)
+            }
         }
 
-        sampahRecyclerView.adapter = SampahAdapter(sampahArrayList)
+        return view
     }
 
     companion object {

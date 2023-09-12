@@ -2,6 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_container_profile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.ProfileFragment">
@@ -11,7 +12,7 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/title_welcome"
             android:layout_width="188dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -24,12 +25,12 @@
             app:layout_constraintBottom_toBottomOf="@+id/imageView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.138"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
-            app:layout_constraintTop_toTopOf="@+id/img_title2"
+            app:layout_constraintStart_toEndOf="@+id/logo_icon"
+            app:layout_constraintTop_toTopOf="@+id/header"
             app:layout_constraintVertical_bias="0.571" />
 
         <ImageView
-            android:id="@+id/img_title2"
+            android:id="@+id/header"
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:src="@drawable/top_title"
@@ -40,7 +41,7 @@
             app:srcCompat="@drawable/top_title" />
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/logo_icon"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="60dp"
@@ -50,7 +51,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/title_namabanksampah"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
@@ -58,38 +59,38 @@
             android:layout_marginEnd="10dp"
             android:text="Nama Bank Sampah"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/textView16"
+            app:layout_constraintEnd_toStartOf="@+id/hasil_namabanksampah"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_title2" />
+            app:layout_constraintTop_toBottomOf="@+id/header" />
 
         <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/title_namapetugas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nama Petugas"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/textView9"
-            app:layout_constraintTop_toBottomOf="@+id/textView16" />
+            app:layout_constraintStart_toStartOf="@+id/title_namabanksampah"
+            app:layout_constraintTop_toBottomOf="@+id/hasil_namabanksampah" />
 
         <TextView
-            android:id="@+id/textView13"
+            android:id="@+id/title_namanasabah"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="Nama Nasabah"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/textView11"
-            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+            app:layout_constraintStart_toStartOf="@+id/title_namapetugas"
+            app:layout_constraintTop_toBottomOf="@+id/title_namapetugas" />
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/title_tanggal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="Tanggal"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/textView13"
-            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+            app:layout_constraintStart_toStartOf="@+id/title_namanasabah"
+            app:layout_constraintTop_toBottomOf="@+id/title_namanasabah" />
 
         <View
             android:id="@+id/divider2"
@@ -99,45 +100,45 @@
             android:layout_marginEnd="30dp"
             android:background="?android:attr/listDivider"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textView14"
-            app:layout_constraintTop_toBottomOf="@+id/textView14" />
+            app:layout_constraintStart_toStartOf="@+id/title_tanggal"
+            app:layout_constraintTop_toBottomOf="@+id/title_tanggal" />
 
         <TextView
-            android:id="@+id/textView16"
+            android:id="@+id/hasil_namabanksampah"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="30dp"
             android:text="Bank Sampah TPS3R Desa Ulakan"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView9"
-            app:layout_constraintTop_toTopOf="@+id/textView9" />
+            app:layout_constraintStart_toEndOf="@+id/title_namabanksampah"
+            app:layout_constraintTop_toTopOf="@+id/title_namabanksampah" />
 
         <TextView
-            android:id="@+id/textView17"
+            android:id="@+id/hasil_namapetugas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Fikry Maulana"
-            app:layout_constraintStart_toStartOf="@+id/textView16"
-            app:layout_constraintTop_toBottomOf="@+id/textView16" />
+            app:layout_constraintStart_toStartOf="@+id/hasil_namabanksampah"
+            app:layout_constraintTop_toBottomOf="@+id/hasil_namabanksampah" />
 
         <TextView
-            android:id="@+id/textView18"
+            android:id="@+id/hasil_namanasabah"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Maulana"
-            app:layout_constraintStart_toStartOf="@+id/textView17"
-            app:layout_constraintTop_toTopOf="@+id/textView13" />
+            app:layout_constraintStart_toStartOf="@+id/hasil_namapetugas"
+            app:layout_constraintTop_toTopOf="@+id/title_namanasabah" />
 
         <TextView
-            android:id="@+id/textView19"
+            android:id="@+id/hasil_tanggal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="05 September 2023"
-            app:layout_constraintStart_toStartOf="@+id/textView18"
-            app:layout_constraintTop_toTopOf="@+id/textView14" />
+            app:layout_constraintStart_toStartOf="@+id/hasil_namanasabah"
+            app:layout_constraintTop_toTopOf="@+id/title_tanggal" />
 
         <TextView
-            android:id="@+id/textView20"
+            android:id="@+id/title_datasampah"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -152,8 +153,8 @@
             android:layout_height="240dp"
             android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="@+id/divider2"
-            app:layout_constraintStart_toStartOf="@+id/textView20"
-            app:layout_constraintTop_toBottomOf="@+id/textView20" />
+            app:layout_constraintStart_toStartOf="@+id/title_datasampah"
+            app:layout_constraintTop_toBottomOf="@+id/title_datasampah" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_jumlah"
@@ -171,17 +172,17 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/textView22"
+                    android:id="@+id/hasil_jumlah"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="192dp"
                     android:text="6 Kg"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/textView21" />
+                    app:layout_constraintTop_toTopOf="@+id/title_jumlah" />
 
                 <TextView
-                    android:id="@+id/textView21"
+                    android:id="@+id/title_jumlah"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -192,7 +193,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textView23"
+                    android:id="@+id/title_total"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
@@ -200,36 +201,36 @@
                     android:text="Total"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/textView21"
-                    app:layout_constraintTop_toBottomOf="@+id/textView21" />
+                    app:layout_constraintStart_toStartOf="@+id/title_jumlah"
+                    app:layout_constraintTop_toBottomOf="@+id/title_jumlah" />
 
                 <TextView
-                    android:id="@+id/textView24"
+                    android:id="@+id/hasil_total"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="Rp 33.000"
                     android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="@+id/textView22"
-                    app:layout_constraintTop_toBottomOf="@+id/textView22" />
+                    app:layout_constraintStart_toStartOf="@+id/hasil_jumlah"
+                    app:layout_constraintTop_toBottomOf="@+id/hasil_jumlah" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btn_data_batal"
             android:layout_width="150dp"
             android:layout_height="48dp"
             android:backgroundTint="#D66627"
             android:text="BATAL"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/button2"
+            app:layout_constraintEnd_toStartOf="@+id/btn_data_kirim"
             app:layout_constraintHorizontal_bias="0.027"
             app:layout_constraintStart_toStartOf="@+id/cv_jumlah"
-            app:layout_constraintTop_toTopOf="@+id/button2"
+            app:layout_constraintTop_toTopOf="@+id/btn_data_kirim"
             app:layout_constraintVertical_bias="0.0" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btn_data_kirim"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"

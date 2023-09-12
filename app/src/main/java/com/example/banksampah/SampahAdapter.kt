@@ -11,8 +11,6 @@ import com.example.banksampah.model.Sampah
 class SampahAdapter (private val sampahList : ArrayList<Sampah>) :
     RecyclerView.Adapter<SampahAdapter.MyViewHolder>() {
 
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.cv_datasampah,parent,false)
         return MyViewHolder(itemView)

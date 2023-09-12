@@ -7,9 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.banksampah.InputSampahAdapter
 import com.example.banksampah.R
+import com.example.banksampah.model.DataSampah
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.TextInputLayout
-import java.text.SimpleDateFormat
 import java.util.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -20,6 +24,13 @@ private const val ARG_PARAM2 = "param2"
 private lateinit var dateInputLayout: TextInputLayout
 private lateinit var dateSpinner: Spinner
 private lateinit var dateEditText : EditText
+private lateinit var addButton : FloatingActionButton
+private lateinit var minButton : FloatingActionButton
+
+private lateinit var recyclerView: RecyclerView
+private lateinit var adapter: InputSampahAdapter
+private val itemList = mutableListOf<DataSampah>()
+
 
 /**
  * A simple [Fragment] subclass.
@@ -47,12 +58,24 @@ class CalculatorFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_calculator, container, false)
         dateInputLayout = view.findViewById(R.id.dateInputLayout)
         dateEditText = view.findViewById(R.id.dateEditText)
-
+        recyclerView = view.findViewById(R.id.rv_inputdatasampah)
 
         dateEditText.setOnClickListener {
             dateEditText.setHint("");
             showDatePicker()
         }
+
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.setHasFixedSize(true)
+        adapter = InputSampahAdapter(itemList)
+        recyclerView.adapter = adapter
+
+        addButton = view.findViewById(R.id.btn_add)
+        minButton = view.findViewById(R.id.btn_min)
+
+
+
+
 
 //        val dateOptions = getAllDates()
 //
@@ -79,17 +102,14 @@ class CalculatorFragment : Fragment() {
 
 
 
-        val autoComplete: AutoCompleteTextView = view.findViewById(R.id.autoCompleteTextView)
-        val autoComplete2: AutoCompleteTextView = view.findViewById(R.id.autoCompleteTextView2)
-        val autoComplete3: AutoCompleteTextView = view.findViewById(R.id.autoCompleteTextView3)
-        val nama_bank = resources.getStringArray(R.array.nama_bank)
-        val nama_petugas = resources.getStringArray(R.array.nama_petugas)
-        val nama_nasabah = resources.getStringArray(R.array.nama_nasabah)
+        val autoComplete: AutoCompleteTextView = view.findViewById(R.id.input_namanasabah)
+        val autoComplete2: AutoCompleteTextView = view.findViewById(R.id.input_banksampah)
+        val autoComplete3: AutoCompleteTextView = view.findViewById(R.id.input_petugas)
+        val nama_kategori = resources.getStringArray(R.array.nama_kategori)
+        val nama_subkategori = resources.getStringArray(R.array.nama_subkategori)
 
-//        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, nama_bank)
-//        autoComplete.setAdapter(arrayAdapter)
-//        val arrayAdapter1 = ArrayAdapter(requireContext(), R.layout.dropdown_item, nama_petugas)
-//        autoComplete2.setAdapter(arrayAdapter1)
+
+
 //        val arrayAdapter2 = ArrayAdapter(requireContext(), R.layout.dropdown_item, nama_nasabah)
 //        autoComplete3.setAdapter(arrayAdapter2)
 
@@ -103,8 +123,30 @@ class CalculatorFragment : Fragment() {
             // Handle the selected item (e.g., show a Toast)
             Toast.makeText(requireContext(), "Selected petugas: $selectedPetugas", Toast.LENGTH_SHORT).show()
         }
+        addButton.setOnClickListener {
+            // Add a new item to the list
 
 
+
+            // Notify the adapter that the data has changed
+            adapter.notifyDataSetChanged()
+        }
+        minButton.setOnClickListener{
+            itemList.clear()
+            adapter.notifyDataSetChanged()
+        }
+
+
+        val targetFragment = ProfileFragment()
+        val bundle = Bundle()
+        bundle.putParcelableArrayList("itemList", ArrayList(itemList))
+        targetFragment.arguments = bundle
+
+
+        requireActivity().supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container_profile, targetFragment)
+            .addToBackStack(null) // Optional: Adds the transaction to the back stack
+            .commit()
 
         return view
     }

@@ -18,7 +18,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="1089dp">
+                android:layout_height="wrap_content">
 
                 <ImageView
                     android:id="@+id/img_title"
@@ -31,7 +31,7 @@
                     app:srcCompat="@drawable/top_title" />
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/title_head"
                     android:layout_width="188dp"
                     android:layout_height="wrap_content"
                     android:text="Selamat Datang, Petugas"
@@ -62,14 +62,17 @@
                     android:layout_width="332dp"
 
                     android:layout_height="60dp"
+                    app:hintAnimationEnabled="true"
+                    app:hintEnabled="false"
                     app:layout_constraintStart_toStartOf="@+id/textView12"
                     app:layout_constraintTop_toBottomOf="@+id/textView12">
 
                     <AutoCompleteTextView
-                        android:id="@+id/autoCompleteTextView3"
+                        android:id="@+id/input_petugas"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:hint="Nama Petugas..."
                         android:paddingStart="5dp"
                         android:text=""
                         android:textSize="14sp" />
@@ -77,18 +80,20 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/dropdown_bank_sampah"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
 
                     android:layout_width="332dp"
                     android:layout_height="60dp"
                     android:layout_gravity="center_vertical"
 
+                    app:hintAnimationEnabled="true"
+                    app:hintEnabled="false"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView10">>
 
                     <AutoCompleteTextView
-                        android:id="@+id/autoCompleteTextView2"
+                        android:id="@+id/input_banksampah"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -103,15 +108,18 @@
                     android:layout_width="332dp"
 
                     android:layout_height="60dp"
+                    app:hintAnimationEnabled="true"
+                    app:hintEnabled="false"
                     app:layout_constraintEnd_toEndOf="@+id/dropdown_petugas"
                     app:layout_constraintStart_toStartOf="@+id/textView15"
                     app:layout_constraintTop_toBottomOf="@+id/textView15">
 
                     <AutoCompleteTextView
-                        android:id="@+id/autoCompleteTextView"
+                        android:id="@+id/input_namanasabah"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:hint="Nama Nasabah..."
                         android:paddingStart="5dp"
                         android:text=""
                         android:textSize="14sp" />
@@ -122,28 +130,30 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/dateInputLayout"
                     android:layout_width="332dp"
-                    android:layout_height="60dp"
+                    android:layout_height="50dp"
                     android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:hint="Select Date"
+                    android:hint="dd/mm/yyyy"
+                    app:hintAnimationEnabled="true"
+                    app:hintEnabled="false"
                     app:layout_constraintEnd_toEndOf="@+id/dropdown_nasabah"
-                    app:layout_constraintStart_toStartOf="@+id/dropdown_nasabah"
-                    app:layout_constraintTop_toBottomOf="@+id/dropdown_nasabah">
+                    app:layout_constraintStart_toStartOf="@+id/textView3"
+                    app:layout_constraintTop_toBottomOf="@+id/textView3">
 
                     <EditText
                         android:id="@+id/dateEditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:clickable="true"
-                        android:focusable="false" />
+                        android:focusable="false"
+                        android:hint="dd/mm/yyyy" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <View
                     android:id="@+id/divider"
-                    android:layout_width="300dp"
+                    android:layout_width="0dp"
                     android:layout_height="2dp"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="10dp"
                     android:background="?android:attr/listDivider"
                     app:layout_constraintEnd_toEndOf="@+id/dateInputLayout"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -151,7 +161,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/dateInputLayout" />
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/title_masukdata"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
@@ -161,179 +171,51 @@
                     app:layout_constraintStart_toStartOf="@+id/divider"
                     app:layout_constraintTop_toBottomOf="@+id/divider" />
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/cv_kat"
-                    android:layout_width="0dp"
-                    android:layout_height="300dp"
-                    android:layout_marginTop="24dp"
-                    app:cardBackgroundColor="#0E8B57"
-                    app:cardCornerRadius="30dp"
-                    app:layout_constraintEnd_toEndOf="@+id/dateInputLayout"
-                    app:layout_constraintStart_toStartOf="@+id/textView5"
-                    app:layout_constraintTop_toBottomOf="@+id/textView5">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/dropdown_bank1"
-                            android:layout_width="300dp"
-
-                            android:layout_height="60dp"
-
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView8">
-
-                            <AutoCompleteTextView
-                                android:id="@+id/autoCompleteTextView01"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:background="#FFFFFF"
-                                android:paddingLeft="10dp"
-                                android:paddingRight="10dp"
-                                android:text="10"
-                                android:textAlignment="center"
-                                android:textSize="14sp" />
-
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <TextView
-                            android:id="@+id/textView6"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="16dp"
-                            android:text="Kategori"
-                            android:textColor="#FFFFFF"
-                            android:textSize="16sp"
-                            android:textStyle="bold"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:id="@+id/textView7"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Sub Kategori"
-                            android:textColor="#FFFFFF"
-                            android:textSize="16sp"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.066"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/dropdown_bank3" />
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/dropdown_bank2"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                            android:layout_width="300dp"
-
-                            android:layout_height="60dp"
-
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView7">
-
-                            <AutoCompleteTextView
-                                android:id="@+id/autoCompleteTextView02"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:background="#FFFFFF"
-                                android:text=""
-                                android:textSize="14sp" />
-
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/dropdown_bank3"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                            android:layout_width="300dp"
-
-                            android:layout_height="60dp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView6">
-
-                            <AutoCompleteTextView
-                                android:id="@+id/autoCompleteTextView03"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_weight="1"
-                                android:background="#FFFFFF"
-                                android:text=""
-                                android:textSize="14sp" />
-
-
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <TextView
-                            android:id="@+id/textView8"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Jumlah"
-                            android:textColor="#FFFFFF"
-                            android:textSize="16sp"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.057"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/dropdown_bank2" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </androidx.cardview.widget.CardView>
-
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/floatingActionButton3"
+                    android:id="@+id/btn_add"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
                     android:layout_marginBottom="10dp"
                     android:clickable="true"
                     android:src="@android:drawable/ic_input_add"
                     app:backgroundTint="#D66627"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/cv_kat"
-                    app:layout_constraintTop_toBottomOf="@+id/cv_kat"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintEnd_toEndOf="@+id/rv_inputdatasampah"
+                    app:layout_constraintTop_toBottomOf="@+id/rv_inputdatasampah"
+                    app:layout_constraintVertical_bias="0.072" />
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/floatingActionButton5"
+                    android:id="@+id/btn_min"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
                     android:clickable="true"
                     android:src="@drawable/minus"
                     app:backgroundTint="#D66627"
-                    app:layout_constraintEnd_toStartOf="@+id/floatingActionButton3"
-                    app:layout_constraintTop_toTopOf="@+id/floatingActionButton3" />
+                    app:layout_constraintEnd_toStartOf="@+id/btn_add"
+                    app:layout_constraintHorizontal_bias="0.98"
+                    app:layout_constraintStart_toStartOf="@+id/rv_inputdatasampah"
+                    app:layout_constraintTop_toTopOf="@+id/btn_add" />
 
                 <Button
                     android:id="@+id/button3"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
                     android:backgroundTint="#D66627"
                     android:text="Batal"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/cv_kat"
-                    app:layout_constraintTop_toBottomOf="@+id/floatingActionButton5"
+                    app:layout_constraintStart_toStartOf="@+id/rv_inputdatasampah"
+                    app:layout_constraintTop_toBottomOf="@+id/btn_min"
                     app:layout_constraintVertical_bias="0.137" />
 
                 <Button
-                    android:id="@+id/button4"
+                    android:id="@+id/btn_kirim"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:backgroundTint="#0E8B57"
                     android:text="Kirim"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/floatingActionButton3"
+                    app:layout_constraintEnd_toEndOf="@+id/btn_add"
                     app:layout_constraintTop_toTopOf="@+id/button3"
                     app:layout_constraintVertical_bias="0.0" />
 
@@ -365,6 +247,24 @@
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/dropdown_petugas"
                     app:layout_constraintTop_toBottomOf="@+id/dropdown_petugas" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_inputdatasampah"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="@+id/dateInputLayout"
+                    app:layout_constraintStart_toStartOf="@+id/title_masukdata"
+                    app:layout_constraintTop_toBottomOf="@+id/title_masukdata" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tanggal "
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/dropdown_nasabah"
+                    app:layout_constraintTop_toBottomOf="@+id/dropdown_nasabah" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
